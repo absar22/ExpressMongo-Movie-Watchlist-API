@@ -56,6 +56,4 @@ PUT /movies/:id – Update a movie
 
 DELETE /movies/:id – Delete a movie
 
-Author
 
-Absar Ahmad – GitHub
