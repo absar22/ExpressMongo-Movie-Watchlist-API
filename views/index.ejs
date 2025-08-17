@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Current Movie</h1>
+<ul class="movies">
+  <% for(let i = 0; i < movies.length; i++) { %>
+    <li class="movie">
+     <span><strong>Title:</strong> <%= movies[i].title %></span>
+<span> | Genre: <%= movies[i].genre %></span>
+<span> | Year: <%= movies[i].year %></span>
+<span> | Director: <%= movies[i].director %></span>
+<span> | Poster: 
+    <% if (movies[i].poster) { %>
+        <img src="<%= movies[i].poster %>" alt="<%= movies[i].title %>" width="50">
+    <% } else { %>
+        N/A
+    <% } %>
+</span>
+<span> | Rating: ⭐ <%= movies[i].rating %></span>
+<span> | Review: <%= movies[i].review || 'N/A' %></span>
+<span> | Watched: <%= movies[i].watched ? "Yes" : "No" %></span>
+<span> | Watched Date: <%= movies[i].watchedDate ? movies[i].watchedDate.toDateString() : 'N/A' %></span>
+
+
+      <!-- Action icons -->
+      <span class="fa fa-edit"></span>   <!-- for editing -->
+      <span class="fa fa-trash delete-btn" data-id="<%= movies[i]._id %>"></span>
+  <!-- for deleting -->
+    </li>
+  <% } %>
+</ul>
+
+
+    <h2>Add A Movie:</h2>
+
+     <form action="/addMovie" method="POST">
+  <label for="title">Movie Title</label>
+  <input type="text" id="title" name="title" required>
+
+  <label for="genre">Genre</label>
+  <input type="text" id="genre" name="genre">
+
+  <label for="year">Release Year</label>
+  <input type="number" id="year" name="year">
+
+  <label for="director">Director</label>
+  <input type="text" id="director" name="director">
+
+  <label for="poster">Poster URL</label>
+  <input type="url" id="poster" name="poster">
+
+  <label for="rating">Your Rating (1–10)</label>
+  <input type="number" id="rating" name="rating" min="1" max="10">
+
+  <label for="review">Your Review</label>
+  <textarea id="review" name="review"></textarea>
+
+  <label for="watched">Watched?</label>
+  <input type="checkbox" id="watched" name="watched">
+
+  <label for="watchedDate">Date Watched</label>
+  <input type="date" id="watchedDate" name="watchedDate">
+
+  <button type="submit">Add Movie</button>
+</form>
+
+
+    <script src='/script.js'></script>
+</body>
+</html>
